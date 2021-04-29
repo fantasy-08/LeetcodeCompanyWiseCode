@@ -62,7 +62,7 @@ function TableGrid({ selection, question, setSelection }) {
                                     if (ques.length !== 6) return <></>
                                     else
                                         return <>
-                                            <TableRow style={{backgroundColor:selection.status[ques[0]]?selection.status[ques[0]]==="done"?"lightgreen":"lightpink":""}}>
+                                            <TableRow style={{backgroundColor:(selection && selection.status && selection.status[ques[0]])?selection.status[ques[0]]==="done"?"lightgreen":"lightpink":""}}>
                                                 <TableCell align="center">{ques[0]}</TableCell>
                                                 <TableCell align="left">{ques[1]}</TableCell>
                                                 <TableCell align="center">{ques[2]}</TableCell>
