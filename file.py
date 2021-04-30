@@ -24,5 +24,5 @@ for entry in entries:
         'file':file
         })
 
-with open('src/company.js', 'w') as outfile:
+with open('src/company_data.js', 'w') as outfile:
     json.dump(data, outfile)
