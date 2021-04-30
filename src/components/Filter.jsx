@@ -11,7 +11,7 @@ export default ({selection, setSelection }) => {
     const searchProp={fileName ,selection, setSelection}
     return (
         <>
-            <Search {...searchProp}/> : <></>
+            <Search {...searchProp}/> <></>
         </>
     )
 }

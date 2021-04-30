@@ -3,7 +3,7 @@ import { Paper, Grid, IconButton, Link, TableHead, TableRow, TableContainer, Tab
 import { green } from '@material-ui/core/colors';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ListIcon from '@material-ui/icons/List';
-function TableGrid({ selection, question, setSelection }) {
+function TableGrid({ selection, question, setSelection,filter,difficulty }) {
     const preventDefault = (event) => event.preventDefault();
     const handleClinkLink = (e) => {
         preventDefault(e);
@@ -60,6 +60,12 @@ function TableGrid({ selection, question, setSelection }) {
                             question && question.length ?
                                 question.map(ques => {
                                     if (ques.length !== 6) return <></>
+                                    else if (selection && selection.status && selection.status[ques[0]] && selection.status[ques[0]] === "done" && filter.indexOf("Solved") === -1) return <></>
+                                    else if (selection && selection.status && selection.status[ques[0]] && selection.status[ques[0]] === "review" && filter.indexOf("Reviewed") === -1) return <></>
+                                    else if (selection && selection.status && !selection.status[ques[0]] && filter.indexOf("Unsolved") === -1) return <></>
+                                    else if (ques[3] === "Easy" && difficulty.indexOf("Easy") === -1) return <></>
+                                    else if (ques[3] === "Medium" && difficulty.indexOf("Medium") === -1) return <></>
+                                    else if (ques[3] === "Hard" && difficulty.indexOf("Hard") === -1) return <></>
                                     else
                                         return <>
                                             <TableRow style={{backgroundColor:(selection && selection.status && selection.status[ques[0]])?selection.status[ques[0]]==="done"?"lightgreen":"lightpink":""}}>
